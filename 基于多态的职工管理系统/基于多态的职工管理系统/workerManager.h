@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 using namespace std;
 #include "worker.h"
@@ -10,30 +10,30 @@ using namespace std;
 
 class WorkerManager {
 public:
-	//¹¹Ôìº¯Êı
+	//æ„é€ å‡½æ•°
 	WorkerManager();
 
-	//Îö¹¹º¯Êı
+	//ææ„å‡½æ•°
 	~WorkerManager();
 	
-	//ÏÔÊ¾Ö°¹¤ĞÅÏ¢
+	//æ˜¾ç¤ºèŒå·¥ä¿¡æ¯
 	void showMenu();
 
-	//ÍË³öÏµÍ³
+	//é€€å‡ºç³»ç»Ÿ
 	void exitSystem();
 
-	//±£´æÎÄ¼ş
+	//ä¿å­˜æ–‡ä»¶
 	void save();
 
-	//Ö°¹¤ÊıÁ¿
+	//èŒå·¥æ•°é‡
 	int mEmpNum;
 
-	//ÅĞ¶ÏÎÄ¼şÊÇ·ñÎª¿Õ±êÖ¾
+	//åˆ¤æ–­æ–‡ä»¶æ˜¯å¦ä¸ºç©ºæ ‡å¿—
 	bool mFileIsEmpty;
 
-	//Ö°¹¤Êı×éÖ¸Õë
+	//èŒå·¥æ•°ç»„æŒ‡é’ˆ
 	Worker** mEmpArray;
 
-	//Ìí¼ÓÔ±¹¤
+	//æ·»åŠ å‘˜å·¥
 	void addEmployee();
 };

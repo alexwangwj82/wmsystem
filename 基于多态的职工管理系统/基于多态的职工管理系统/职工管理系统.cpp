@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 using namespace std;
 #include "workerManager.h"
 #include "employee.h"
@@ -11,29 +11,29 @@ int main() {
 	int userMenuChoice = 0;
 	while (true) {
 		wm.showMenu();
-		cout << "ÇëÊäÈëÄúµÄÑ¡Ôñ£º" << endl;
+		cout << "è¯·è¾“å…¥æ‚¨çš„é€‰æ‹©ï¼š" << endl;
 		cin >> userMenuChoice;
 		switch (userMenuChoice) {
-		case 0: //ÍË³ö¹ÜÀí³ÌĞò
+		case 0: //é€€å‡ºç®¡ç†ç¨‹åº
 			wm.exitSystem();
 			break;
-		case 1: //Ôö¼ÓÖ°¹¤ĞÅÏ¢
+		case 1: //å¢åŠ èŒå·¥ä¿¡æ¯
 			wm.addEmployee();
 			break;
-		case 2: //ÏÔÊ¾Ö°¹¤ĞÅÏ¢
+		case 2: //æ˜¾ç¤ºèŒå·¥ä¿¡æ¯
 			break;
-		case 3: //É¾³ıÀëÖ°Ö°¹¤
+		case 3: //åˆ é™¤ç¦»èŒèŒå·¥
 			break;
-		case 4: //ĞŞ¸ÄÖ°¹¤ĞÅÏ¢
+		case 4: //ä¿®æ”¹èŒå·¥ä¿¡æ¯
 			break;
-		case 5: //²éÕÒÖ°¹¤ĞÅÏ¢
+		case 5: //æŸ¥æ‰¾èŒå·¥ä¿¡æ¯
 			break;
-		case 6: //°´ÕÕ±àºÅÅÅĞò
+		case 6: //æŒ‰ç…§ç¼–å·æ’åº
 			break;
-		case 7: //Çå¿ÕËùÓĞÎÄµµ
+		case 7: //æ¸…ç©ºæ‰€æœ‰æ–‡æ¡£
 			break;
 		default:
-			cout << "ÊäÈëµÄÑ¡Ïî²»ºÏÀí£¬ÇëÊäÈë0-7Ö®¼äµÄÊı×Ö¡£" << endl;
+			cout << "è¾“å…¥çš„é€‰é¡¹ä¸åˆç†ï¼Œè¯·è¾“å…¥0-7ä¹‹é—´çš„æ•°å­—ã€‚" << endl;
 			system("pause");
 			system("cls");
 			break;
@@ -41,17 +41,17 @@ int main() {
 	}
 	
 	//Worker* worker = nullptr;
-	//worker = new Employee(1, "ÕÅÈı", 1);
+	//worker = new Employee(1, "å¼ ä¸‰", 1);
 	//worker->showInfo();
 	//cout << endl;
 	//delete worker;
 
-	//worker = new Manager(2, "ÀîËÄ", 2);
+	//worker = new Manager(2, "æå››", 2);
 	//worker->showInfo();
 	//cout << endl;
 	//delete worker;
 
-	//worker = new Boss(3, "ÍõÎå", 3);
+	//worker = new Boss(3, "ç‹äº”", 3);
 	//worker->showInfo();
 	//cout << endl;
 	//delete worker;

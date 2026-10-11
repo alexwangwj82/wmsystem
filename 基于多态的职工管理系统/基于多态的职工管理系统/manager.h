@@ -1,16 +1,16 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 using namespace std;
 #include "worker.h"
 
 class Manager : public Worker {
 public:
-	//¹¹Ôìº¯Êı
+	//æ„é€ å‡½æ•°
 	Manager(int id, string name, int dId);
 
-	//ÏÔÊ¾Ô±¹¤ĞÅÏ¢
+	//æ˜¾ç¤ºå‘˜å·¥ä¿¡æ¯
 	virtual void showInfo();
 
-	//»ñÈ¡Ô±¹¤¸ÚÎ»
+	//è·å–å‘˜å·¥å²—ä½
 	virtual string getDeptName();
 };

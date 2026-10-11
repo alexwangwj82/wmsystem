@@ -1,15 +1,15 @@
-#include "workerManager.h"
+ï»¿#include "workerManager.h"
 using namespace std;
 
 WorkerManager::WorkerManager() {
 	ifstream ifs;
-	ifs.open(FILENAME, ios::in); //¶ÁÎÄ¼ş
+	ifs.open(FILENAME, ios::in); //è¯»æ–‡ä»¶
 
-	//1¡¢Èç¹ûÎÄ¼ş²»´æÔÚ
+	//1ã€å¦‚æœæ–‡ä»¶ä¸å­˜åœ¨
 	if (!ifs.is_open())			
 	{
-		cout << "ÎÄ¼ş²»´æÔÚ" << endl;
-		//³õÊ¼»¯ÊôĞÔ
+		cout << "æ–‡ä»¶ä¸å­˜åœ¨" << endl;
+		//åˆå§‹åŒ–å±æ€§
 		this->mEmpNum = 0;
 		this->mEmpArray = NULL;
 		this->mFileIsEmpty = true;
@@ -18,15 +18,15 @@ WorkerManager::WorkerManager() {
 		return;
 	}
 
-	//2¡¢Èç¹ûÎÄ¼ş´æÔÚ
+	//2ã€å¦‚æœæ–‡ä»¶å­˜åœ¨
 	char ch;
 	ifs >> ch;
 
-	//Èç¹ûÎÄ¼şÎª¿Õ
+	//å¦‚æœæ–‡ä»¶ä¸ºç©º
 	if (ifs.eof()) {
-		cout << "ÎÄ¼şÎª¿Õ£¬ÎŞÔ±¹¤Êı¾İ" << endl;
+		cout << "æ–‡ä»¶ä¸ºç©ºï¼Œæ— å‘˜å·¥æ•°æ®" << endl;
 
-		//³õÊ¼»¯ÊôĞÔ
+		//åˆå§‹åŒ–å±æ€§
 		this->mEmpNum = 0;
 		this->mEmpArray = NULL;
 		this->mFileIsEmpty = true;
@@ -45,64 +45,64 @@ WorkerManager::~WorkerManager() {
 
 void WorkerManager::showMenu() {
 	cout << "*******************************************" << endl;
-	cout << "********** »¶Ó­Ê¹ÓÃÖ°¹¤¹ÜÀíÏµÍ³£¡**********" << endl;
-	cout << "************* 0.ÍË³ö¹ÜÀí³ÌĞò **************" << endl;
-	cout << "************* 1.Ôö¼ÓÖ°¹¤ĞÅÏ¢ **************" << endl;
-	cout << "************* 2.ÏÔÊ¾Ö°¹¤ĞÅÏ¢ **************" << endl;
-	cout << "************* 3.É¾³ıÀëÖ°Ö°¹¤ **************" << endl;
-	cout << "************* 4.ĞŞ¸ÄÖ°¹¤ĞÅÏ¢ **************" << endl;
-	cout << "************* 5.²éÕÒÖ°¹¤ĞÅÏ¢ **************" << endl;
-	cout << "************* 6.°´ÕÕ±àºÅÅÅĞò **************" << endl;
-	cout << "************* 7.Çå¿ÕËùÓĞÎÄµµ **************" << endl;
+	cout << "********** æ¬¢è¿ä½¿ç”¨èŒå·¥ç®¡ç†ç³»ç»Ÿï¼**********" << endl;
+	cout << "************* 0.é€€å‡ºç®¡ç†ç¨‹åº **************" << endl;
+	cout << "************* 1.å¢åŠ èŒå·¥ä¿¡æ¯ **************" << endl;
+	cout << "************* 2.æ˜¾ç¤ºèŒå·¥ä¿¡æ¯ **************" << endl;
+	cout << "************* 3.åˆ é™¤ç¦»èŒèŒå·¥ **************" << endl;
+	cout << "************* 4.ä¿®æ”¹èŒå·¥ä¿¡æ¯ **************" << endl;
+	cout << "************* 5.æŸ¥æ‰¾èŒå·¥ä¿¡æ¯ **************" << endl;
+	cout << "************* 6.æŒ‰ç…§ç¼–å·æ’åº **************" << endl;
+	cout << "************* 7.æ¸…ç©ºæ‰€æœ‰æ–‡æ¡£ **************" << endl;
 	cout << "*******************************************" << endl;
 	cout << endl;
 }
 
-//ÍË³öÏµÍ³
+//é€€å‡ºç³»ç»Ÿ
 void WorkerManager::exitSystem() {
 	cout << endl;
-	cout << "ÍË³öÏµÍ³£¬»¶Ó­ÏÂ´ÎÊ¹ÓÃ¡£" << endl;
+	cout << "é€€å‡ºç³»ç»Ÿï¼Œæ¬¢è¿ä¸‹æ¬¡ä½¿ç”¨ã€‚" << endl;
 	system("pause");
 	exit(0);
 }
 
-//Ìí¼ÓÔ±¹¤
+//æ·»åŠ å‘˜å·¥
 void WorkerManager::addEmployee() {
-	cout << "ÇëÊäÈëÒªÌí¼ÓÔ±¹¤µÄÊıÁ¿" << endl;
-	int addNum = 0; //±£´æÌí¼ÓÔ±¹¤µÄÊıÁ¿
+	cout << "è¯·è¾“å…¥è¦æ·»åŠ å‘˜å·¥çš„æ•°é‡" << endl;
+	int addNum = 0; //ä¿å­˜æ·»åŠ å‘˜å·¥çš„æ•°é‡
 
 	cin >> addNum;
 	if (addNum > 0) {
 		int newSize = this->mEmpNum + addNum;
 
-		//¿ª±ÙĞÂ¿Õ¼ä
+		//å¼€è¾Ÿæ–°ç©ºé—´
 		Worker** newSpace = new Worker* [newSize];
 		for (int i = 0; i < newSize; ++i) {
 			newSpace[i] = nullptr;
 		}
 
-		//½«Ô­À´¿Õ¼äÏÂÊı¾İ£¬¿½±´µ½ĞÂ¿Õ¼äÏÂ
+		//å°†åŸæ¥ç©ºé—´ä¸‹æ•°æ®ï¼Œæ‹·è´åˆ°æ–°ç©ºé—´ä¸‹
 		if (this->mEmpArray != NULL) {
 			for (int i = 0; i < this->mEmpNum; i++) {
 				newSpace[i] = this->mEmpArray[i];
 			}
 		}
 
-		//ÅúÁ¿Ìí¼ÓĞÂÊı¾İ
+		//æ‰¹é‡æ·»åŠ æ–°æ•°æ®
 		for (int i = 0; i < addNum; i++) {
-			int id; //Ö°¹¤±àºÅ
-			string name; //Ö°¹¤ĞÕÃû
-			int deptId; //²¿ÃÅ±àºÅ
+			int id; //èŒå·¥ç¼–å·
+			string name; //èŒå·¥å§“å
+			int deptId; //éƒ¨é—¨ç¼–å·
 			Worker* worker = NULL;
 
-			cout << "ÇëÊäÈëµÚ" << i + 1 << "¸öĞÂÖ°¹¤±àºÅ£º" << endl;
+			cout << "è¯·è¾“å…¥ç¬¬" << i + 1 << "ä¸ªæ–°èŒå·¥ç¼–å·ï¼š" << endl;
 			cin >> id;
 
-			cout << "ÇëÊäÈëµÚ" << i + 1 << "¸öĞÂÔ±¹¤µÄĞÕÃû£º" << endl;
+			cout << "è¯·è¾“å…¥ç¬¬" << i + 1 << "ä¸ªæ–°å‘˜å·¥çš„å§“åï¼š" << endl;
 			cin >> name;
 
 			while (true) {
-				cout << "ÇëÊäÈë²¿ÃÅ±àºÅ£¬1. Ô±¹¤ 2. ¾­Àí 3. ÀÏ°å" << endl;
+				cout << "è¯·è¾“å…¥éƒ¨é—¨ç¼–å·ï¼Œ1. å‘˜å·¥ 2. ç»ç† 3. è€æ¿" << endl;
 				cin >> deptId;
 
 				switch (deptId) {
@@ -116,56 +116,56 @@ void WorkerManager::addEmployee() {
 					worker = new Boss(id, name, deptId);
 					break;
 				default:
-					cout << "ÊäÈëÊı¾İÓĞÎó£¬ÇëÊäÈë1/2/3Ö®¼äµÄÕûÊı" << endl;
+					cout << "è¾“å…¥æ•°æ®æœ‰è¯¯ï¼Œè¯·è¾“å…¥1/2/3ä¹‹é—´çš„æ•´æ•°" << endl;
 					continue;
 				}
 				break;
 			}
 			
-			//½«´´½¨Ö°¹¤Ö¸Õë£¬±£´æµ½Êı×éÖĞ
+			//å°†åˆ›å»ºèŒå·¥æŒ‡é’ˆï¼Œä¿å­˜åˆ°æ•°ç»„ä¸­
 			newSpace[this->mEmpNum + i] = worker;
 		}
 
-		//ÔÚËùÓĞĞÂÊı¾İÌî³äÍê³Éºó£¬ÔÙÊÍ·ÅÔ­ÓĞ¿Õ¼ä²¢Ìæ»»Ö¸Õë
+		//åœ¨æ‰€æœ‰æ–°æ•°æ®å¡«å……å®Œæˆåï¼Œå†é‡Šæ”¾åŸæœ‰ç©ºé—´å¹¶æ›¿æ¢æŒ‡é’ˆ
 		if (this->mEmpArray != NULL) {
 			delete[] this->mEmpArray;
 			this->mEmpArray = nullptr;
 		}
 
-		//¸ü¸ÄĞÂ¿Õ¼äµÄÖ¸Ïò
+		//æ›´æ”¹æ–°ç©ºé—´çš„æŒ‡å‘
 		this->mEmpArray = newSpace;
 
-		//¸üĞÂĞÂµÄÖ°¹¤ÈËÊı
+		//æ›´æ–°æ–°çš„èŒå·¥äººæ•°
 		this->mEmpNum = newSize;
 
-		//ÌáÊ¾Ìí¼Ó³É¹¦
-		cout << "³É¹¦Ìí¼ÓÁË" << addNum << "ÃûĞÂÔ±¹¤" << endl;
-		cout << "ÏÖÔÚ¹²ÓĞ" << mEmpNum << "ÃûÔ±¹¤" << endl;
+		//æç¤ºæ·»åŠ æˆåŠŸ
+		cout << "æˆåŠŸæ·»åŠ äº†" << addNum << "åæ–°å‘˜å·¥" << endl;
+		cout << "ç°åœ¨å…±æœ‰" << mEmpNum << "åå‘˜å·¥" << endl;
 
-		//½«Êı¾İ±£´æµ½ÎÄ¼ş
+		//å°†æ•°æ®ä¿å­˜åˆ°æ–‡ä»¶
 		this->save();
 
-		//¸ü¸Ä±êÖ¾×´Ì¬£¬ÎÄ¼ş²»Îª¿Õ
+		//æ›´æ”¹æ ‡å¿—çŠ¶æ€ï¼Œæ–‡ä»¶ä¸ä¸ºç©º
 		this->mFileIsEmpty = false;
 		
 	}
 	else
 	{
-		cout << "ÊäÈëÓĞÎó£¬ÇëÊäÈë´óÓÚ0µÄÕûÊı¡£" << endl;
+		cout << "è¾“å…¥æœ‰è¯¯ï¼Œè¯·è¾“å…¥å¤§äº0çš„æ•´æ•°ã€‚" << endl;
 	}
 }
 
-//±£´æÎÄ¼ş
+//ä¿å­˜æ–‡ä»¶
 void WorkerManager::save() {
 	ofstream ofs;
 	ofs.open(FILENAME, ios::out);
 
-	//±éÀúÊı×é£¬Ğ´ÈëÃ¿¸öÔ±¹¤µÄid£¬ĞÕÃûÒÔ¼°²¿ÃÅ±àºÅ
+	//éå†æ•°ç»„ï¼Œå†™å…¥æ¯ä¸ªå‘˜å·¥çš„idï¼Œå§“åä»¥åŠéƒ¨é—¨ç¼–å·
 	for (int i=0; i < this->mEmpNum ; i++) {
 		ofs << this->mEmpArray[i]->mId << " "
 			<< this->mEmpArray[i]->mName << " "
 			<< this->mEmpArray[i]->mDeptId << endl;
 	}
-	//¹Ø±ÕÎÄ¼ş
+	//å…³é—­æ–‡ä»¶
 	ofs.close();
 }

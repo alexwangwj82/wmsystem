@@ -1,21 +1,21 @@
-#include "manager.h"
+ï»¿#include "manager.h"
 
-//¹¹Ôìº¯Êı
+//æ„é€ å‡½æ•°
 Manager::Manager(int id, string name, int dId) {
 	this->mId = id;
 	this->mName = name;
 	this->mDeptId = dId;
 }
 
-//ÏÔÊ¾Ô±¹¤ĞÅÏ¢
+//æ˜¾ç¤ºå‘˜å·¥ä¿¡æ¯
 void Manager::showInfo() {
-	cout << "Ö°¹¤±àºÅ£º" << this->mDeptId << endl;
-	cout << "Ö°¹¤ĞÕÃû£º" << this->mName << endl;
-	cout << "Ö°¹¤²¿ÃÅ£º" << this->getDeptName() << endl;
-	cout << "¸ÚÎ»Ö°Ôğ£ºÀÏ°å½»¸øµÄÈÎÎñ¡£" << endl;
+	cout << "èŒå·¥ç¼–å·ï¼š" << this->mDeptId << endl;
+	cout << "èŒå·¥å§“åï¼š" << this->mName << endl;
+	cout << "èŒå·¥éƒ¨é—¨ï¼š" << this->getDeptName() << endl;
+	cout << "å²—ä½èŒè´£ï¼šè€æ¿äº¤ç»™çš„ä»»åŠ¡ã€‚" << endl;
 }
 
-//»ñÈ¡Ô±¹¤¸ÚÎ»
+//è·å–å‘˜å·¥å²—ä½
 string Manager::getDeptName() {
-	return string("¾­Àí");
+	return string("ç»ç†");
 }

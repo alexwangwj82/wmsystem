@@ -1,23 +1,23 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 using namespace std;
 #include <string>
 
-//Ô±¹¤µÄ³éÏóÀà
+//å‘˜å·¥çš„æŠ½è±¡ç±»
 class Worker {
 public:
-	//Ô±¹¤µÄ±àºÅ
+	//å‘˜å·¥çš„ç¼–å·
 	int mId;
 
-	//Ô±¹¤µÄĞÕÃû
+	//å‘˜å·¥çš„å§“å
 	string mName;
 
-	//Ô±¹¤µÄ²¿ÃÅ±àºÅ
+	//å‘˜å·¥çš„éƒ¨é—¨ç¼–å·
 	int mDeptId;
 	
-	//ÏÔÊ¾Ô±¹¤ĞÅÏ¢
+	//æ˜¾ç¤ºå‘˜å·¥ä¿¡æ¯
 	virtual void showInfo() = 0;
 
-	//»ñÈ¡Ô±¹¤¸ÚÎ»
+	//è·å–å‘˜å·¥å²—ä½
 	virtual string getDeptName() = 0;
 };
