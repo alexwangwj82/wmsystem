@@ -1,5 +1,6 @@
 ﻿#include "workerManager.h"
 using namespace std;
+using std::cout;
 
 WorkerManager::WorkerManager() {
 	ifstream ifs;
@@ -22,8 +23,9 @@ WorkerManager::WorkerManager() {
 	char ch;
 	ifs >> ch;
 
-	//如果文件为空
-	if (ifs.eof()) {
+	
+	if (ifs.eof())  //如果文件为空
+	{
 		cout << "文件为空，无员工数据" << endl;
 
 		//初始化属性
@@ -34,6 +36,19 @@ WorkerManager::WorkerManager() {
 		ifs.close();
 		return;
 	}
+
+	//3、文件存在且不为空
+	this->mEmpNum = this->getEmpNum();  //获取职工人数
+	cout << "文件中共有" << this->mEmpNum << "名职工" << endl;
+	this->mEmpArray = new Worker * [this->mEmpNum]; //开辟数组空间，存放职工指针
+	this->initEmp(); //初始化职工
+
+	//测试代码，显示职工信息
+	/*for (int i = 0; i < this->mEmpNum; i++) {
+		cout << "职工编号：" << this->mEmpArray[i]->mId
+			<< "\t职工姓名：" << this->mEmpArray[i]->mName
+			<< "\t岗位：" << this->mEmpArray[i]->mDeptId << endl;
+	}*/
 }
 
 WorkerManager::~WorkerManager() {
@@ -164,8 +179,63 @@ void WorkerManager::save() {
 	for (int i=0; i < this->mEmpNum ; i++) {
 		ofs << this->mEmpArray[i]->mId << " "
 			<< this->mEmpArray[i]->mName << " "
-			<< this->mEmpArray[i]->mDeptId << endl;
+			<< this->mEmpArray[i]->getDeptName() << endl;
 	}
 	//关闭文件
 	ofs.close();
+}
+
+int  WorkerManager::getEmpNum() {
+	ifstream  ifs;
+	ifs.open(FILENAME, ios::in); //读文件
+
+	int id, dId; string name;
+	int num = 0; //记录人数
+
+	while (ifs >> id && ifs >> name && ifs >> dId)
+	{
+		//统计人数
+		num++;
+	}
+	return num;
+}
+//初始化员工
+void WorkerManager::initEmp() {
+	ifstream ifs;
+	ifs.open(FILENAME, ios::in); //读文件
+
+	int id, dId; string name;
+	int  index = 0; //数组下标
+	while (ifs >> id && ifs >> name && ifs >> dId)
+	{
+		Worker* worker = NULL;
+		if (dId == 1) {  //员工
+			worker = new Employee(id, name, dId);
+		}
+		else if (dId == 2) {  //经理
+			worker = new Manager(id, name, dId);
+		}
+		else {  //老板
+			worker = new Boss(id, name, dId);
+		}
+
+		this->mEmpArray[index] = worker; //保存到数组中
+		index++; //下标++
+	}
+}
+//显示职工
+void WorkerManager::showEmp() {
+	if (this->mFileIsEmpty) { //文件不存在或记录为空
+		cout << "文件不存在或记录为空" << endl;
+	}
+	else //文件存在且记录不为空
+		{
+			for(int i = 0; i < this->mEmpNum; i++){ 
+				this->mEmpArray[i]->showInfo(); //多态调用接口，显示员工信息
+		}
+	}
+
+	//暂停系统，按任意键继续
+	system("pause");
+	system("cls");
 }

@@ -21,6 +21,7 @@ int main() {
 			wm.addEmployee();
 			break;
 		case 2: //显示职工信息
+			wm.showEmp();
 			break;
 		case 3: //删除离职职工
 			break;
@@ -39,22 +40,6 @@ int main() {
 			break;
 		}
 	}
-	
-	//Worker* worker = nullptr;
-	//worker = new Employee(1, "张三", 1);
-	//worker->showInfo();
-	//cout << endl;
-	//delete worker;
-
-	//worker = new Manager(2, "李四", 2);
-	//worker->showInfo();
-	//cout << endl;
-	//delete worker;
-
-	//worker = new Boss(3, "王五", 3);
-	//worker->showInfo();
-	//cout << endl;
-	//delete worker;
 
 	system("pause");
 	return 0;

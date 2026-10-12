@@ -15,7 +15,7 @@ public:
 
 	//析构函数
 	~WorkerManager();
-	
+
 	//显示职工信息
 	void showMenu();
 
@@ -31,9 +31,18 @@ public:
 	//判断文件是否为空标志
 	bool mFileIsEmpty;
 
+	//统计员工人数
+	int getEmpNum();
+
 	//职工数组指针
 	Worker** mEmpArray;
 
 	//添加员工
 	void addEmployee();
+
+	//初始化员工
+	void initEmp();
+
+	//显示职工
+	void showEmp();
 };
