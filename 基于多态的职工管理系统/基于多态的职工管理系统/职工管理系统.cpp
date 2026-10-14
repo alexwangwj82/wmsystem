@@ -24,6 +24,7 @@ int main() {
 			wm.showEmp();
 			break;
 		case 3: //删除离职职工
+			wm.delEmp();
 			break;
 		case 4: //修改职工信息
 			break;

@@ -45,4 +45,10 @@ public:
 
 	//显示职工
 	void showEmp();
+
+	//删除职工
+	void delEmp();
+
+	//判断职工是否存在
+	int empExists(int id);
 };
