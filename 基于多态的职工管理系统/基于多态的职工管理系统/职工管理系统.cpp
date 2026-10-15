@@ -27,6 +27,7 @@ int main() {
 			wm.delEmp();
 			break;
 		case 4: //修改职工信息
+			wm.modifyEmp();
 			break;
 		case 5: //查找职工信息
 			break;

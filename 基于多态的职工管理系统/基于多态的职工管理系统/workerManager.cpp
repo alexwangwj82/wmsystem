@@ -179,7 +179,7 @@ void WorkerManager::save() {
 	for (int i=0; i < this->mEmpNum ; i++) {
 		ofs << this->mEmpArray[i]->mId << " "
 			<< this->mEmpArray[i]->mName << " "
-			<< this->mEmpArray[i]->getDeptName() << endl;
+			<< this->mEmpArray[i]->mDeptId << endl;
 	}
 	//关闭文件
 	ofs.close();
@@ -268,12 +268,62 @@ void WorkerManager::delEmp() {
 
 //判断职工是否存在
 int WorkerManager::empExists(int id) {
-	int index = -1;
+	int index = -1; //数组下标
 	for (int i = 0; i < this->mEmpNum; i++) {
 		if (this->mEmpArray[i]->mId == id) { //找到职工
-			index = i;
+			index = i; //拿到下标
 			break;
 		}
 	}
-	return index;
+	return index; //返回下标
+}
+
+//修改职工信息
+void WorkerManager::modifyEmp() {
+	if (this->mFileIsEmpty) {
+		cout << "文件不存在或者记录为空！" << endl;
+	}
+	else //文件存在且有数据
+	{
+		cout << "请输入修改员工的编号：" << endl;
+		int id = 0;
+		cin >> id;
+		int index = this->empExists(id);
+		if (index != -1) { //找到员工
+			delete this->mEmpArray[index];
+			int newId = 0;
+			string newName = "";
+			int newDeptId = 0;
+			cout << "找到id号为" << id << "的员工，请输入新的员工id：" << endl;
+			cin >> newId;
+			cout << "请输入新的姓名：" << endl;
+			cin >> newName;
+			cout << "请输入新的岗位：1、员工 2、经理 3、老板：" << endl;
+			cin >> newDeptId;
+
+			Worker* worker = NULL;
+			switch (newDeptId) {
+			case 1:
+				worker = new Employee(newId, newName, newDeptId);
+				break;
+			case 2:
+				worker = new Manager(newId, newName, newDeptId);
+				break;
+			case 3:
+				worker = new Boss(newId, newName, newDeptId);
+				break;
+			default:
+				break;
+			}
+
+			this->mEmpArray[index] = worker; //更新员工信息到数组中
+			cout << "数据修改成功！" << endl;
+			this->save();
+		}
+		else  //没找到员工
+			cout << "修改失败，未找到员工" << endl;
+	}
+
+	system("pause");
+	system("cls");
 }

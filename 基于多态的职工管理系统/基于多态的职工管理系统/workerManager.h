@@ -51,4 +51,7 @@ public:
 
 	//判断职工是否存在
 	int empExists(int id);
+
+	//修改职工信息
+	void modifyEmp();
 };
