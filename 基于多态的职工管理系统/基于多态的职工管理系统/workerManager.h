@@ -54,4 +54,7 @@ public:
 
 	//修改职工信息
 	void modifyEmp();
+
+	//查找职工
+	void findEmp();
 };

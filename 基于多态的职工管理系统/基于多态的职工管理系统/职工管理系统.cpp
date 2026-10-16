@@ -30,6 +30,7 @@ int main() {
 			wm.modifyEmp();
 			break;
 		case 5: //查找职工信息
+			wm.findEmp();
 			break;
 		case 6: //按照编号排序
 			break;

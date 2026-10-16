@@ -1,4 +1,5 @@
 ﻿#include "workerManager.h"
+#include <limits>
 using namespace std;
 using std::cout;
 
@@ -326,4 +327,72 @@ void WorkerManager::modifyEmp() {
 
 	system("pause");
 	system("cls");
+}
+
+//查找职工
+void WorkerManager::findEmp() {
+	if (this->mFileIsEmpty) {
+		cout << "文件不存在或记录为空！" << endl;
+	}
+	else
+	{
+		cout << "请输入查找职工的方式：1、按编号查找 2、按姓名查找：" << endl;
+		int selection = 0;
+		if (!(cin >> selection)) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "输入选项有误！请输入1或2 " << endl;
+			return;
+		}
+		switch (selection) 
+		{
+			case 1: //按编号
+			{
+				int id = 0;
+				int index = 0;
+				cout << "请输入职工的编号：" << endl;
+				cin >> id;
+				index = this->empExists(id);
+				if (index != -1) { //如果找到
+					cout << "查找成功！该职工的信息如下：" << endl;
+					this->mEmpArray[index]->showInfo();
+				}
+				else {
+					cout << "未能找到编号为" << id << "的员工" << endl;
+				}
+				system("pause");
+				system("cls");
+				break;
+			}
+		
+			case 2: //按姓名
+			{
+				cout << "请输入职工的姓名：" << endl;
+				string name = "";
+				cin >> name;
+				bool flag = false;
+				for (int j = 0; j < this->mEmpNum; j++) {
+					if (this->mEmpArray[j]->mName == name) { //找到
+						flag = true;
+						cout << "查找成功！该员工信息如下：" << endl;
+						this->mEmpArray[j]->showInfo();
+					}
+				}
+				if (flag == false) { //没找到
+					cout << "查无此人！" << endl;
+				}
+				system("pause");
+				system("cls");
+				break;
+			}
+
+			default: //输入错误
+			{
+				cout << "输入选项有误！请输入1或2 " << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
 }
