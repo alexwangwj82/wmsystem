@@ -57,4 +57,7 @@ public:
 
 	//查找职工
 	void findEmp();
+
+	//排序职工
+	void sortEmp();
 };

@@ -396,3 +396,43 @@ void WorkerManager::findEmp() {
 		}
 	}
 }
+
+//排序职工
+void WorkerManager::sortEmp() {
+	if (mFileIsEmpty) {
+		cout << "文件不存在或记录为空！无需排序。" << endl;
+	}
+	else {
+		int selection = 0;
+		cout << "请输入排序方式，1、升序，2、降序：" << endl;
+		cin >> selection;
+		if (selection == 1) { //升序
+			for (int i = 0; i < mEmpNum - 1; i++) {
+				for (int j = 0; j < mEmpNum - 1 - i; j++) {
+					if (mEmpArray[j]->mId > mEmpArray[j + 1]->mId) {
+						Worker* temp = mEmpArray[j];
+						mEmpArray[j] = mEmpArray[j + 1];
+						mEmpArray[j + 1] = temp;
+					}
+				}
+			}
+		}
+		else if(selection==2){ //降序
+			for (int i = 0; i < mEmpNum - 1; i++) {
+				for (int j = 0; j < mEmpNum - 1 - i; j++) {
+					if (mEmpArray[j]->mId < mEmpArray[j + 1]->mId) {
+						Worker* temp = mEmpArray[j];
+						mEmpArray[j] = mEmpArray[j + 1];
+						mEmpArray[j + 1] = temp;
+					}
+				}
+			}
+		}
+		else {
+			cout << "输入选项有误！" << endl;
+		}
+		cout << "排序成功，排序后的结果为：" << endl;
+		this->showEmp();
+		this->save(); //保存排序后的结果到文件
+	}
+}

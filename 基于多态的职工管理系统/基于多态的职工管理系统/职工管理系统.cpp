@@ -33,6 +33,7 @@ int main() {
 			wm.findEmp();
 			break;
 		case 6: //按照编号排序
+			wm.sortEmp();
 			break;
 		case 7: //清空所有文档
 			break;
